@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name SPARKFUN)(type Legacy)(uri /home/brendon/kicad_libs/SparkFun-KiCad-Libraries/Libraries/SparkFun-Aesthetics.lib)(options "")(descr ""))
+  (lib (name DK_LDO)(type Legacy)(uri /home/brendon/kicad_libs/digikey-kicad-library/digikey-symbols/dk_PMIC-Voltage-Regulators-Linear.lib)(options "")(descr ""))
+  (lib (name DK_USB)(type Legacy)(uri /home/brendon/kicad_libs/digikey-kicad-library/digikey-symbols/dk_USB-DVI-HDMI-Connectors.lib)(options "")(descr ""))
+  (lib (name DK_UC)(type Legacy)(uri /home/brendon/kicad_libs/digikey-kicad-library/digikey-symbols/dk_Embedded-Microcontrollers.lib)(options "")(descr ""))
+  (lib (name SF_CONN)(type Legacy)(uri /home/brendon/kicad_libs/SparkFun-KiCad-Libraries/Libraries/SparkFun-Connectors.lib)(options "")(descr ""))
+)
