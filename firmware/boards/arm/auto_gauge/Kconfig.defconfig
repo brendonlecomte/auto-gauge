@@ -1,0 +1,8 @@
+# AutoGauge Board configuration
+
+# copyright?
+# license!
+
+config BOARD
+	default "auto_gauge"
+	depends on BOARD_AUTO_GAUGE

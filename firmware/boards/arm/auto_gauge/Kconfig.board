@@ -1,0 +1,8 @@
+# AutoGauge board configuration
+
+# copyright?.
+# license!
+
+config BOARD_AUTO_GAUGE
+	bool "Auto Gauge"
+	depends on SOC_PART_NUMBER_SAMD21E18A

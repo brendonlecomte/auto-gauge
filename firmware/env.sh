@@ -3,5 +3,5 @@ export CROSS_COMPILE=/usr/bin/arm-none-eabi-
 
 mkdir build
 pushd build
-cmake -DBOARD=adafruit_trinket_m0 -GNinja ..
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -GNinja ..
 popd
