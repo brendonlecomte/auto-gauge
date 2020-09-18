@@ -2,6 +2,7 @@
 #include <device.h>
 #include <devicetree.h>
 #include <drivers/gpio.h>
+#include <usb/usb_device.h>
 
 /* 1000 msec = 1 sec */
 #define SLEEP_TIME_MS   1000
@@ -36,6 +37,8 @@ void main(void)
 	if (ret < 0) {
 		return;
 	}
+
+	usb_enable(NULL);
 
 	while (1) {
 		gpio_pin_set(dev, PIN, (int)led_is_on);
