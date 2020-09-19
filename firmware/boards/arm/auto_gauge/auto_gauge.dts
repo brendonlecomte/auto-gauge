@@ -6,8 +6,8 @@
 	compatible = "auto_gauge", "atmel,samd21e18a", "atmel,samd21";
 
 	chosen {
-		zephyr,console = &usb0;
-		zephyr,shell-uart = &usb0;
+		zephyr,console = &sercom0;
+		zephyr,shell-uart = &sercom0;
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
 		zephyr,code-partition = &code_partition;
@@ -28,8 +28,8 @@
 };
 
 &sercom0 {
-	status = "disabled";
-	compatible = "atmel, sam0-uart";
+	status = "okay";
+	compatible = "atmel,sam0-uart";
 	current-speed = <115200>;
 	rxpo = <3>;
 	txpo = <1>;
