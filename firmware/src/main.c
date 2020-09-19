@@ -3,6 +3,9 @@
 #include <devicetree.h>
 #include <drivers/gpio.h>
 #include <usb/usb_device.h>
+#include <logging/log.h>
+
+LOG_MODULE_REGISTER(test, LOG_LEVEL_INF);
 
 /* 1000 msec = 1 sec */
 #define SLEEP_TIME_MS   1000
@@ -26,23 +29,31 @@ void main(void)
 {
 	const struct device *dev;
 	bool led_is_on = true;
-	int ret;
+	int ret = 0;
+
+	//ret = usb_enable(NULL);
+
+	if(ret != 0){
+		LOG_ERR("USB enable failed");
+		return;
+	}
 
 	dev = device_get_binding(LED0);
 	if (dev == NULL) {
+		LOG_ERR("LED init failed");
 		return;
 	}
 
 	ret = gpio_pin_configure(dev, PIN, GPIO_OUTPUT_ACTIVE | FLAGS);
 	if (ret < 0) {
+		LOG_ERR("LED pin configure failed");
 		return;
 	}
-
-	usb_enable(NULL);
 
 	while (1) {
 		gpio_pin_set(dev, PIN, (int)led_is_on);
 		led_is_on = !led_is_on;
 		k_msleep(SLEEP_TIME_MS);
+		LOG_INF("testing");
 	}
 }
