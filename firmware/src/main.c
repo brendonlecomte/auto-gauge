@@ -31,7 +31,7 @@ void main(void)
 	bool led_is_on = true;
 	int ret = 0;
 
-	//ret = usb_enable(NULL);
+	ret = usb_enable(NULL);
 
 	if(ret != 0){
 		LOG_ERR("USB enable failed");
@@ -50,10 +50,12 @@ void main(void)
 		return;
 	}
 
+	int i =0;
 	while (1) {
 		gpio_pin_set(dev, PIN, (int)led_is_on);
 		led_is_on = !led_is_on;
 		k_msleep(SLEEP_TIME_MS);
-		LOG_INF("testing");
+		LOG_INF("testing %d", i);
+		i++;
 	}
 }
