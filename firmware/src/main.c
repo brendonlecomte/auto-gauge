@@ -2,6 +2,8 @@
 #include <device.h>
 #include <devicetree.h>
 #include <drivers/gpio.h>
+#include <drivers/led_strip.h>
+
 #include <usb/usb_device.h>
 #include <logging/log.h>
 
@@ -9,6 +11,8 @@ LOG_MODULE_REGISTER(test, LOG_LEVEL_INF);
 
 /* 1000 msec = 1 sec */
 #define SLEEP_TIME_MS   1000
+
+#define LED_RING DT_LABEL(DT_NODELABEL(led_strip))
 
 /* The devicetree node identifier for the "led0" alias. */
 #define LED0_NODE DT_NODELABEL(led0)
@@ -25,9 +29,13 @@ LOG_MODULE_REGISTER(test, LOG_LEVEL_INF);
 #define FLAGS	0
 #endif
 
+const struct led_rgb red = { .r = 0xf, .g = 0x0, .b = 0x0, };
+struct led_rgb pixels[12] = {0};
+
 void main(void)
 {
 	const struct device *dev;
+	const struct device *strip;
 	bool led_is_on = true;
 	int ret = 0;
 
@@ -44,6 +52,12 @@ void main(void)
 		return;
 	}
 
+	strip = device_get_binding(LED_RING);
+
+	if(strip == NULL) {
+		LOG_ERR("Bad strip");
+	}
+
 	ret = gpio_pin_configure(dev, PIN, GPIO_OUTPUT_ACTIVE | FLAGS);
 	if (ret < 0) {
 		LOG_ERR("LED pin configure failed");
@@ -51,11 +65,21 @@ void main(void)
 	}
 
 	int i =0;
+	int x = 0;
 	while (1) {
 		gpio_pin_set(dev, PIN, (int)led_is_on);
 		led_is_on = !led_is_on;
 		k_msleep(SLEEP_TIME_MS);
 		LOG_INF("testing %d", i);
+		int err = led_strip_update_rgb(strip,
+					&pixels,
+					12);
+		if(err) {
+			LOG_ERR("LED update: %d", err);
+		}
+		memcpy(&pixels[x], &red, sizeof(struct led_rgb));
 		i++;
+		x++;
+		if(x >= 12) x =0;
 	}
 }

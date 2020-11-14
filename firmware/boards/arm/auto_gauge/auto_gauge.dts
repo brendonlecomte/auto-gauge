@@ -21,6 +21,7 @@
 		};
 	};
 
+
 };
 
 &cpu0 {
@@ -28,11 +29,27 @@
 };
 
 &sercom0 {
+	#address-cells = <1>;
+	#size-cells = <0>;
 	status = "okay";
-	compatible = "atmel,sam0-uart";
-	current-speed = <115200>;
-	rxpo = <3>;
-	txpo = <1>;
+	compatible = "atmel,sam0-spi";
+	//current-speed = <115200>;
+	dipo = <2>;
+	dopo = <1>;
+
+	led_strip: ws2812@0 {
+		compatible = "worldsemi,ws2812-spi";
+		label = "WS2812";
+
+		reg = <0>;
+		spi-max-frequency = <24000000>;
+
+
+		chain-length = <12>;
+		spi-one-frame = <0x70>;
+		spi-zero-frame = <0x00>;
+
+	};
 };
 
 //missing 2 more sercoms...
