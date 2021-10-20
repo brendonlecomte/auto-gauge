@@ -1,5 +1,5 @@
 export ZERPHYR_TOOLCHAIN_VARIANT=cross-compile
-export CROSS_COMPILE=/usr/bin/arm-none-eabi-
+export CROSS_COMPILE=/usr/local/bin/arm-none-eabi-
 
 mkdir build
 pushd build

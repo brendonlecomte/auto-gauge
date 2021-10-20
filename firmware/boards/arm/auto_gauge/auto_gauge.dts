@@ -17,11 +17,17 @@
 		compatible = "gpio-leds";
 		led0: led_0 {
 			gpios = <&porta 10 0>;
-			label = "LED";
+			label = "blinky";
 		};
 	};
 
-
+	gauge: drv8833_0 {
+		status = "okay";
+		compatible = "stepper,drv8833";
+		id = <2>;
+		gpios = <&porta 10 0>;
+		label = "main";
+	};
 };
 
 &cpu0 {
