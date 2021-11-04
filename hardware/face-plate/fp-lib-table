@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name auto-gauge)(type KiCad)(uri /home/brendon/research/auto-gauge/hardware/auto-gauge/auto-gauge.pretty)(options "")(descr ""))
+)

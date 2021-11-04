@@ -1,4 +1,4 @@
-(module Auto-Stepper-Test (layer F.Cu) (tedit 614FDF6F)
+(module Auto-Stepper-Test (layer F.Cu) (tedit 618330C1)
   (fp_text reference REF** (at 6.64186 -3.70492) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
@@ -28,4 +28,9 @@
     (die_length 2.6))
   (pad "" thru_hole circle (at 5.99186 13.50508) (size 2 2) (drill 2) (layers *.Cu *.Mask)
     (die_length 2.6))
+  (model :componenets:X27.168_Stepper_Motor.wrl
+    (offset (xyz 6 0 -9))
+    (scale (xyz 0.4 0.4 0.3))
+    (rotate (xyz -180 0 90))
+  )
 )
